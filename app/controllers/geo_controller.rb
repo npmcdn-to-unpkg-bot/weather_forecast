@@ -4,9 +4,9 @@ class GeoController < ApplicationController
   def lookup
     if params[:query]
       if /^[0-9]*$/.match(params[:query])
-        geodata = Geodatum.where('zipcode LIKE ?', "#{params[:query]}%")
+        geodata = Geodatum.select("zipcode, state, city").where('zipcode LIKE ?', "#{params[:query]}%")
       else
-        geodata = Geodatum.where('state LIKE ? OR city LIKE ?', "#{params[:query]}%", "#{params[:query]}%").distinct(true)
+        geodata = Geodatum.select("state, city").where('state LIKE ? OR city LIKE ?', "#{params[:query]}%", "#{params[:query]}%").distinct(true)
       end
 
       render json: geodata

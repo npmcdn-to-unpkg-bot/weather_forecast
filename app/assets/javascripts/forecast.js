@@ -14,6 +14,7 @@ $(document).ready(function() {
     var $typeahead = $('#search-box .typeahead').typeahead(null, {
         display: 'city',
         source: dataSource,
+        limit: 10,
         templates: {
             empty: [
                 '<div class="empty-message">',
@@ -21,7 +22,12 @@ $(document).ready(function() {
                 '</div>'
             ].join('\n'),
             suggestion: function(data) {
-                return '<div><strong>' + data.zipcode + '</strong>,<strong>' + data.city  + '</strong>,<strong>' + data.state + '</strong></div>';
+                var result = '<div>';
+                if (data.zipcode) {
+                    result += '<strong>' + data.zipcode + '</strong>, ';
+                }
+                result += '<strong>' + data.city  + '</strong>, <strong>' + data.state + '</strong>(state)</div>';
+                return result;
             }
         }
     });

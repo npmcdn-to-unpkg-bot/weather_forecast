@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315142016) do
+ActiveRecord::Schema.define(version: 20160317131721) do
 
   create_table "geodata", force: :cascade do |t|
     t.string  "zipcode", limit: 11,                         null: false
-    t.string  "state",   limit: 2,                          null: false
+    t.string  "state",   limit: 25,                         null: false
     t.string  "city",    limit: 45,                         null: false
     t.decimal "lat",                precision: 9, scale: 6, null: false
     t.decimal "long",               precision: 9, scale: 6, null: false
