@@ -33,7 +33,7 @@ $(document).ready(function() {
 // initialize your element
     var $typeahead = $('#search-box .typeahead').typeahead(
         {
-            //highlight: true
+            highlight: true
         },
         {
             display: 'zipcode',
@@ -49,9 +49,9 @@ $(document).ready(function() {
                 suggestion: function(data) {
                     var result = '<div>';
                     if (data.zipcode) {
-                        result += '<strong>' + data.zipcode + '</strong>, ';
+                        result +=  data.zipcode + ', ';
                     }
-                    result += '<strong>' + data.city  + '</strong>, <strong>' + data.state + '</strong>(state)</div>';
+                    result += data.city + ', ' + data.state + '</div>';
                     return result;
                 },
                 header: '<h3 class="suggestion-heading">Zipcodes</h3>'
@@ -70,9 +70,9 @@ $(document).ready(function() {
                 suggestion: function(data) {
                     var result = '<div>';
                     if (data.zipcode) {
-                        result += '<strong>' + data.zipcode + '</strong>, ';
+                        result += data.zipcode + ', ';
                     }
-                    result += '<strong>' + data.city  + '</strong>, <strong>' + data.state + '</strong>(state)</div>';
+                    result += data.city + '</div>';
                     return result;
                 },
                 header: '<h3 class="suggestion-heading">Cities</h3>'
@@ -91,15 +91,23 @@ $(document).ready(function() {
                 suggestion: function(data) {
                     var result = '<div>';
                     if (data.zipcode) {
-                        result += '<strong>' + data.zipcode + '</strong>, ';
+                        result += data.zipcode + ', ';
                     }
-                    result += '<strong>' + data.city  + '</strong>, <strong>' + data.state + '</strong>(state)</div>';
+                    result += data.state + '</div>';
                     return result;
                 },
                 header: '<h3 class="suggestion-heading">States</h3>'
             }
         }
-    );
+    ).bind("typeahead:selected", function(obj, datum, name) {
+        if (datum.zipcode) {
+            // forecast by zipcode
+        } else if (datum.city) {
+            // forecast by city
+        } else if (datum.state) {
+            // forecast by state
+        }
+    });
 
     /*$('#search-box .typeahead').typeahead({
      hint: true,
