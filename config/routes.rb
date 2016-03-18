@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'geo/all'
 
   get 'forecast/index'
+  get 'forecast/get_report'
 
   root 'forecast#index'
 

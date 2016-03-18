@@ -72,7 +72,7 @@ $(document).ready(function() {
                     if (data.zipcode) {
                         result += data.zipcode + ', ';
                     }
-                    result += data.city + '</div>';
+                    result += data.city + ',' + data.state + '</div>';
                     return result;
                 },
                 header: '<h3 class="suggestion-heading">Cities</h3>'
@@ -102,10 +102,11 @@ $(document).ready(function() {
     ).bind("typeahead:selected", function(obj, datum, name) {
         if (datum.zipcode) {
             // forecast by zipcode
-        } else if (datum.city) {
+        } else if (datum.city && datum.state) {
             // forecast by city
         } else if (datum.state) {
             // forecast by state
+            console.log(datum.lat + ' ' + datum.long);
         }
     });
 

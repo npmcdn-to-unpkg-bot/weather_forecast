@@ -76,4 +76,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.x.forecast_service_url = 'https://api.forecast.io/forecast/f31eff47d5f3d4b88f6d7795094d288e/';
 end

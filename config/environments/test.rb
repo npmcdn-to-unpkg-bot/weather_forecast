@@ -39,4 +39,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.x.forecast_service_url = 'https://api.forecast.io/forecast/f31eff47d5f3d4b88f6d7795094d288e/';
 end
