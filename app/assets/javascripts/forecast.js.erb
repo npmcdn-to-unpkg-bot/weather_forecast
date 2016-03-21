@@ -1,3 +1,5 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers} %>
+
 $(document).ready(function() {
 // Get your data source
     var dataSourceZipcodes = new Bloodhound({
@@ -106,7 +108,7 @@ $(document).ready(function() {
             // forecast by city
         } else if (datum.state) {
             // forecast by state
-            console.log(datum.lat + ' ' + datum.long);
+          //alert('<%= url_for(action: 'get_report', controller: 'forecast') %>');
         }
     });
 

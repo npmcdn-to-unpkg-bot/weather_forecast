@@ -6,11 +6,11 @@ class GeoController < ApplicationController
     if params[:query]
       geodata = case params[:type]
         when 'zipcode'
-          Geodatum.select('zipcode, state, city, `lat`, `long`').where('zipcode LIKE ?', "#{params[:query]}%")
+          Geodatum.select('zipcode, state, city').where('zipcode LIKE ?', "#{params[:query]}%")
         when 'city'
-          Geodatum.select('city, state, `lat`, `long`').where('city LIKE ?', "#{params[:query]}%").distinct(true)
+          Geodatum.select('city, state').where('city LIKE ?', "#{params[:query]}%").distinct(true)
         when 'state'
-          Geodatum.select('state, `lat`, `long`').where('state LIKE ?', "#{params[:query]}%").group(:state)
+          Geodatum.select('state').where('state LIKE ?', "#{params[:query]}%").group(:state)
       end
 
       render json: geodata

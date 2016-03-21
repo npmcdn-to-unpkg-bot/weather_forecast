@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317131721) do
+ActiveRecord::Schema.define(version: 20160321132230) do
+
+  create_table "forecast_caches", force: :cascade do |t|
+    t.string   "name",       limit: 100,   null: false
+    t.text     "value",      limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "forecast_caches", ["name"], name: "index_forecast_caches_on_name", unique: true, using: :btree
 
   create_table "geodata", force: :cascade do |t|
     t.string  "zipcode", limit: 11,                         null: false
