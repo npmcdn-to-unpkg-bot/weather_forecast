@@ -14,6 +14,8 @@ class GeoController < ApplicationController
       end
 
       render json: geodata
+    else
+      render json: {}
     end
   end
 
