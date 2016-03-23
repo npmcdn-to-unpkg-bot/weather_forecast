@@ -31,7 +31,7 @@ class ForecastController < ApplicationController
     if forecast_cache = ForecastCache.find_by_name(cache_name)
       daily_forecast_json = forecast_cache.value
     else
-      url = URI(Rails.configuration.x.forecast_service_url + geodata.lat.to_s + ',' + geodata.long.to_s)
+      url = URI(Rails.configuration.x.forecast_service_url + geodata.lat.to_s + ',' + geodata.long.to_s + '?units=si&exclude=currently,minutely,hourly,flags')
       forecast_hash = JSON.parse(Net::HTTP.get(url))
       # Use with this style forecast_hash["daily"]["summary"]
       daily_forecast_json = JSON.generate(forecast_hash["daily"])

@@ -102,14 +102,15 @@ $(document).ready(function() {
             }
         }
     ).bind("typeahead:selected", function(obj, datum, name) {
-        if (datum.zipcode) {
+        /*if (datum.zipcode) {
             // forecast by zipcode
         } else if (datum.city && datum.state) {
             // forecast by city
         } else if (datum.state) {
             // forecast by state
           //alert('<%= url_for(action: 'get_report', controller: 'forecast') %>');
-        }
+        }*/
+        angular.element(document.getElementById('forecast-content')).scope().setSearchQuery(datum);
     });
 
     /*$('#search-box .typeahead').typeahead({
@@ -123,3 +124,48 @@ $(document).ready(function() {
      );*/
 
 });
+
+var forecastApp = angular.module('forecastApp', []);
+
+forecastApp.controller('forecastController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+  $scope.data = {};
+  $scope.params = {};
+
+  $scope.setSearchQuery = function(data) {
+    var url = '<%= url_for(action: 'get_report', controller: 'forecast', only_path: true) %>';
+    var params = {};
+
+    if (data.zipcode) {
+      // forecast by zipcode
+      params = {
+        area_type: 'zipcode',
+        zipcode: data.zipcode
+      };
+    } else if (data.city && data.state) {
+     // forecast by city
+      params = {
+        area_type: 'city',
+        city: data.city,
+        state: data.state
+      };
+    } else if (data.state) {
+     // forecast by state
+      params = {
+        area_type: 'state',
+        state: data.state
+      };
+    }
+
+    $scope.params = params;
+
+    $http.get(url, {params: params}).then(function successCallback(response) {
+      $scope.data = response.data;
+
+    }, function errorCallback(response) {
+      alert('Server side error');
+    });
+
+    $scope.$apply()
+  };
+
+}]);
