@@ -17,6 +17,7 @@ $ vagrant up --provider virtualbox   # This will take a while the very first tim
 #### 3. Run the following commands
 ```
 $ vagrant ssh
+$ cd /vagrant
 $ gem install bundle
 $ gem install bundler
 $ gem install rails
