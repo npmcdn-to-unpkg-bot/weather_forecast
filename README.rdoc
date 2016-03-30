@@ -1,28 +1,37 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Do the following steps to run the project in development mode
 
-Things you may want to cover:
+#### 1. Install Vagrant and Virtualbox
 
-* Ruby version
+#### 2. Install following plugins
+```
+$ vagrant plugin install vagrant-librarian-chef
+```
 
-* System dependencies
+#### 2.a Init Vagrant Server via Virtualbox
+```
+$ vagrant up --provider virtualbox   # This will take a while the very first time, at least 15-30 minutes.
+```
 
-* Configuration
+#### 3. Run the following commands
+```
+$ vagrant ssh
+$ gem install bundle
+$ gem install bundler
+$ gem install rails
+$ rbenv rehash
+$ bundle install
+```
 
-* Database creation
+#### 4. Create and prepare the database
+```
+$ echo "CREATE DATABASE forecast" | mysql -u root -p;
+$ bundle exec rake db:schema:load
+$ bundle exec rake db:seed
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+#### 5. Run the rails server
+```
+rails s -e development -p 3000 -b 0.0.0.0
+```
