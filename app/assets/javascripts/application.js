@@ -16,4 +16,7 @@
 //= require bootstrap-sprockets
 //= require twitter/typeahead.min
 //= require angular
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .

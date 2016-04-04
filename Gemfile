@@ -29,6 +29,9 @@ gem 'twitter-typeahead-rails', :git => "git://github.com/yourabi/twitter-typeahe
 
 gem 'angularjs-rails', '~> 1.5'
 
+gem 'react-rails', '~> 1.6.0'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

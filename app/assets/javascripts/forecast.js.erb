@@ -7,7 +7,7 @@ $(document).ready(function() {
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         //prefetch: 'geo/all',
         remote: {
-            url: 'geo/lookup?type=zipcode&query=%QUERYSTRING',
+            url: '/geo/lookup?type=zipcode&query=%QUERYSTRING',
             wildcard: '%QUERYSTRING'
         }
     });
@@ -17,7 +17,7 @@ $(document).ready(function() {
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         //prefetch: 'geo/all',
         remote: {
-            url: 'geo/lookup?type=city&query=%QUERYSTRING',
+            url: '/geo/lookup?type=city&query=%QUERYSTRING',
             wildcard: '%QUERYSTRING'
         }
     });
@@ -27,7 +27,7 @@ $(document).ready(function() {
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         //prefetch: 'geo/all',
         remote: {
-            url: 'geo/lookup?type=state&query=%QUERYSTRING',
+            url: '/geo/lookup?type=state&query=%QUERYSTRING',
             wildcard: '%QUERYSTRING'
         }
     });

@@ -1,0 +1,14 @@
+<div class="container" id="forecast-content">
+  <div class="forecast-search">
+    <div id="search-box">
+      <div class="row">
+        <div class="col-xs-12">
+          <input class="typeahead" type="text" placeholder="Postal Code or City/State">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= react_component('Forecast', {weatherData: {name: 'Test name', temperature: '50'}}) %>
+
+</div>

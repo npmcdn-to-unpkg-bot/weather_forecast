@@ -4,6 +4,10 @@ class ForecastController < ApplicationController
 
   end
 
+  def index_react
+
+  end
+
   # Gets forecast report either from db or from forecast.io
   # Input params - :area_type, :zipcode, :city, :state
   # Output - json with "daily" forecast data
