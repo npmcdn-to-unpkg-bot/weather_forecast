@@ -1,6 +1,7 @@
 <% environment.context_class.instance_eval { include Rails.application.routes.url_helpers} %>
 
 $(document).ready(function() {
+
 // Get your data source
     var dataSourceZipcodes = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -102,15 +103,11 @@ $(document).ready(function() {
             }
         }
     ).bind("typeahead:selected", function(obj, datum, name) {
-        /*if (datum.zipcode) {
-            // forecast by zipcode
-        } else if (datum.city && datum.state) {
-            // forecast by city
-        } else if (datum.state) {
-            // forecast by state
-          //alert('<%= url_for(action: 'get_report', controller: 'forecast') %>');
-        }*/
+      if ($('#data-div').hasClass('react')) {
+        forecastReact.performSearch(datum);
+      } else {
         angular.element(document.getElementById('forecast-content')).scope().setSearchQuery(datum);
+      }
     });
 
     /*$('#search-box .typeahead').typeahead({
@@ -122,7 +119,6 @@ $(document).ready(function() {
      source: dataSource
      }
      );*/
-
 });
 
 var forecastApp = angular.module('forecastApp', []);

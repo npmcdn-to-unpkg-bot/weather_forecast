@@ -8,13 +8,13 @@
       </div>
     </div>
   </div>
-  <div class="forecast-data" id="data-div" ng-if="data.data.length > 0">
+  <div class="forecast-data angular" id="data-div" ng-if="data.data.length > 0">
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-12" ng-show="data.data.length > 0">
             <div class="page-header">
-              <h1>Weather forecast from {{data.data[0].time * 1000 | date: 'd MMMM'}} to {{data.data[1].time * 1000 | date: 'd MMMM'}}</h1>
+              <h1>Weather forecast from {{data.data[0].time * 1000 | date: 'MMMM d'}} to {{data.data[1].time * 1000 | date: 'MMMM d'}}</h1>
               <h1><small>{{data.summary}}</small></h1>
             </div>
           </div>

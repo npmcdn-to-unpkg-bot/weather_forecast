@@ -1,0 +1,7 @@
+<% environment.context_class.instance_eval { include Rails.application.routes.url_helpers} %>
+
+$(document).ready(function() {
+    if ($('#data-div').hasClass('react')) {
+        forecastReact = ReactDOM.render(<Forecast source="<%= url_for(action: 'get_report', controller: 'forecast', only_path: true) %>" />, document.getElementById('data-div'));
+    }
+});
